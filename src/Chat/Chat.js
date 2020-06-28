@@ -28,8 +28,14 @@ class Chat extends Component {
   }
 
   setMessages = (userMessages) => {
-    const message = this.state.messages.concat(userMessages);
-    console.log(message);
+    const tempMsg = answersData.find((answer) =>
+      answer.tags.find((element) => userMessages.text.includes(element))
+    );
+    let message = this.state.messages.concat(userMessages);
+
+    if (tempMsg != null) {
+      message = message.concat(tempMsg);
+    }
 
     setTimeout(() => {
       this.setState({

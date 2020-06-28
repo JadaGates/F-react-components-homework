@@ -5,8 +5,11 @@ import { ROLE } from '../../constants';
 class ChatInput extends Component {
   handleButtonChange = () => {
     const msg = {};
+    const inputField = document.getElementById('user-input');
     msg.role = ROLE.CUSTOMER;
-    msg.text = document.getElementById('user-input').value;
+    msg.text = inputField.value;
+    inputField.value = '';
+    inputField.focus();
     this.props.onSendClicked(msg);
   };
 
